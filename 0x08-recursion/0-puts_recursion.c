@@ -15,17 +15,13 @@
 
 void _puts_recursion(char *s){	
 
-	try{
-		if (*s){
+	if (*s){
 			_putchar(*s);
 			_puts_recursion(s + 1);
 		}
 		else{
 			_putchar('\n');
 		}
-	}
-	catch (Exception e){
-		_putchar('\n');
-	}
+	
 }
 
