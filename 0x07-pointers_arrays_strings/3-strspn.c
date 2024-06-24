@@ -2,33 +2,27 @@
 
 /**
  * _strspn - gets the length of a prefix substring
- * @s: pointer to the string to be searched
- * @accept: pointer to the string containing the characters to match
-
+ * @s: string to search
+ * @accept: prefix substring
+ * 
+ * Return: number of bytes in the initial segment of s which consist only of bytes from accept
  */
 unsigned int _strspn(char *s, char *accept)
 {
-    unsigned int count = 0;
-    int found;
+    unsigned int i, j, count = 0;
 
-    while (*s)
+    for (i = 0; s[i]; i++)
     {
-        found = 0;
-        while (*accept)
+        for (j = 0; accept[j]; j++)
         {
-            if (*s == *accept)
+            if (s[i] == accept[j])
             {
                 count++;
-                found = 1;
                 break;
             }
-            accept++;
         }
-        if (found == 0)
+        if (!accept[j])
             break;
-        s++;
-        accept -= count;
     }
-
     return count;
 }

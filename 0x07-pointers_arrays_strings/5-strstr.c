@@ -2,29 +2,26 @@
 
 /**
  * _strstr - locates a substring
- * @haystack: pointer to the string to be searched
- * @needle: pointer to the substring to locate
- *
-
+ * @haystack: string to search
+ * @needle: substring to locate
+ * 
+ * Return: pointer to beginning of located substring, or NULL if not found
  */
 char *_strstr(char *haystack, char *needle)
 {
-    while (*haystack != '\0')
+    while (*haystack)
     {
-        char *start = haystack;
-        char *pattern = needle;
+        char *h = haystack;
+        char *n = needle;
 
-        while (*pattern != '\0' && *haystack != '\0' && *haystack == *pattern)
+        while (*n && *h == *n)
         {
-            haystack++;
-            pattern++;
+            h++;
+            n++;
         }
-
-        if (*pattern == '\0')
-            return start;
-
-        haystack = start + 1;
+        if (!*n)
+            return haystack;
+        haystack++;
     }
-
     return NULL;
 }

@@ -2,23 +2,23 @@
 
 /**
  * _strpbrk - searches a string for any of a set of bytes
- * @s: pointer to the string to be searched
- * @accept: pointer to the string containing the bytes to search for
- 
+ * @s: string to search
+ * @accept: set of bytes to search for
+ * 
+ * Return: pointer to the byte in s that matches one of the bytes in accept, or NULL if no such byte is found
  */
 char *_strpbrk(char *s, char *accept)
 {
-    while (*s != '\0')
+    while (*s)
     {
-        char *ptr = accept;
-        while (*ptr != '\0')
+        char *a = accept;
+        while (*a)
         {
-            if (*s == *ptr)
+            if (*s == *a)
                 return s;
-            ptr++;
+            a++;
         }
         s++;
     }
-
     return NULL;
 }
